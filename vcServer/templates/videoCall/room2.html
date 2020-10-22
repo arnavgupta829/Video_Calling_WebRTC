@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>WebRTC Multi-User Video Call</title>
+    <link rel = "stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div id="videos" class="videos">
+        <div id="localVideoContainer" class="videoContainer">
+            <video id="localVideo" autoplay></video>
+        </div>
+        <!-- Add remote videos here using webRTC2.js -->
+    </div>
+    <input id="screenshare" type="button" value="Screenshare">
+    <input id="frontcamera" type="button" value="Front Camera">
+    <input id="record_call" type="button" value="Start Recording">
+    <input id="download_call" type="button" disabled = "disabled" value="Download"><br>
+    <a id="downloadLink" type="video/webm" style="display: none"></a>
+    <textarea id="chat-log" cols="100" rows="20"></textarea><br>
+    <input id="chat-message-input" type="text" size="100"><br>
+    <input id="chat-message-submit" type="button" value="Send">
+    {{ room_name|json_script:"room-name" }}
+    <script src="{% static 'js/webRTC2.js'%}"></script>
+</body>
+</html>
